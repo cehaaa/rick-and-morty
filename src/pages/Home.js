@@ -16,7 +16,9 @@ const Home = () => {
       <div className="content-wrapper">
         <div className="heading-text">Let's get some ideas.</div>
         <div>
-          <button onClick={fetchRandomIdeas} className="btn-primary">Random</button>
+          <button onClick={fetchRandomIdeas} className="btn-primary">
+            Random
+          </button>
         </div>
       </div>
       <div className="content-wrapper">

@@ -3,8 +3,9 @@
 :root{
   /* colors */
   --white: #ffffff;
-  --gray: #f7f6f3;
-  --hover-gray: #e8e7e4;
+  --gray: #F3F4F6;
+  --medium-gray: #D1D5DB;
+  --darken-gray: #6B7280;
   --blue: #3B82F6;
   --hover-blue: #2563EB;
   --black: #37352F;
@@ -49,7 +50,7 @@ body{
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
-  border-bottom: 1px solid var(--hover-gray);
+  border-bottom: 1px solid var(--medium-gray);
 }
 
 .navbar .navbar-title {  
@@ -68,20 +69,50 @@ body{
   align-items: center;
 }
 
-.ideas-wrapper{
-  border: 1px solid var(--hover-gray);
-  padding: 2rem;
+.ideas-card{  
+  margin: 2rem 0;
+  border: 1px solid var(--medium-gray);
+  padding:1rem;
   width: 100%;
+  transition: 200ms;
+  border-radius: 0.25rem;  
 }
 
-.search-wrapper {  
-  padding: 2rem;
+.ideas-card:hover{
+  border: 1px solid var(--black);
+}
+
+.ideas-card .ideas-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ideas-id {
+  font-size: var(--lg);
+  font-weight: var(--semibold);
+  color: var(--darken-gray)
+}
+
+.ideas-heading {
+  font-size: var(--xl2);
+  font-weight: var(--semibold)
+}
+
+.ideas-text{
+  color: var(--darken-gray)
+}
+
+.ideas-card .ideas-card-body {
+  margin: 1rem 0 0 0;
+  padding: 2rem 0 2rem 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .heading-text{
   font-size: var(--xl2);  
 }
-
 
 .btn-primary {
   display:flex;
@@ -102,3 +133,11 @@ body{
   background: var(--hover-blue);
 }
 
+@media screen and (max-width: 600px) { 
+  .container{
+    width: 100%
+  }
+  .content-wrapper {
+    flex-dircetion: row;
+  }
+}
