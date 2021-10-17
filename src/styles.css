@@ -62,10 +62,16 @@ body{
 }
 
 .content-wrapper{    
-  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
   display:flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.ideas-wrapper{
+  border: 1px solid var(--hover-gray);
+  padding: 2rem;
+  width: 100%;
 }
 
 .search-wrapper {  

@@ -1,10 +1,14 @@
 import React from 'react'
-import { fetchRandomIdeas } from '../service/ideas.js'
+import { getRandomIdeas } from '../service/ideas'
+import Ideas from '../components/ideas/Ideas'
+import { useState, useEffect } from "react";
 
 const Home = () => {
+  const [idea, setIdea] = useState({});
 
-  function getRandomIdeas(){
-      fetchRandomIdeas()
+  const fetchRandomIdeas = async () => {
+    const res = await getRandomIdeas()
+    setIdea(res.data)
   }
 
   return (
@@ -12,8 +16,11 @@ const Home = () => {
       <div className="content-wrapper">
         <div className="heading-text">Let's get some ideas.</div>
         <div>
-          <button onClick={getRandomIdeas} className="btn-primary">Random</button>
+          <button onClick={fetchRandomIdeas} className="btn-primary">Random</button>
         </div>
+      </div>
+      <div className="content-wrapper">
+        <Ideas idea={idea} />
       </div>
     </div>
   )

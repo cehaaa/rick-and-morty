@@ -1,5 +1,5 @@
 import axios from '../utils/axios';
 
-export const fetchRandomIdeas = () => {
-  return axios.get()
+export const getRandomIdeas = () => {
+  return axios.get()    
 }
