@@ -1,5 +1,5 @@
-import axios from '../utils/axios';
+import axios from "../utils/axios";
 
 export const getRandomIdeas = () => {
-  return axios.get()    
-}
+  return axios.get("/activity");
+};

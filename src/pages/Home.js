@@ -1,15 +1,19 @@
-import React from 'react'
-import { getRandomIdeas } from '../service/ideas'
-import Ideas from '../components/ideas/Ideas'
+import React from "react";
+import { getRandomIdeas } from "../service/ideas";
+import Ideas from "../components/ideas/Ideas";
 import { useState, useEffect } from "react";
 
 const Home = () => {
   const [idea, setIdea] = useState({});
 
+  useEffect(() => {
+    fetchRandomIdeas();
+  }, []);
+
   const fetchRandomIdeas = async () => {
-    const res = await getRandomIdeas()
-    setIdea(res.data)
-  }
+    const res = await getRandomIdeas();
+    setIdea(res.data);
+  };
 
   return (
     <div>
@@ -25,7 +29,7 @@ const Home = () => {
         <Ideas idea={idea} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
