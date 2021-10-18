@@ -83,6 +83,7 @@ body{
 }
 
 .ideas-card .ideas-card-header {
+  text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -95,7 +96,7 @@ body{
 }
 
 .ideas-heading {
-  font-size: var(--xl2);
+  font-size: var(--xl);
   font-weight: var(--semibold)
 }
 
@@ -104,8 +105,7 @@ body{
 }
 
 .ideas-card .ideas-card-body {
-  margin: 1rem 0 0 0;
-  padding: 2rem 0 2rem 0;
+  padding: 3rem 0 2rem 0;
   display: flex;
   justify-content: space-between;
 }
@@ -133,11 +133,48 @@ body{
   background: var(--hover-blue);
 }
 
+.mobile-save-button {
+  display: none;
+}
+
 @media screen and (max-width: 600px) { 
   .container{
     width: 100%
   }
   .content-wrapper {
-    flex-dircetion: row;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+  .heading-text{
+    padding-bottom: 1rem;
+  }
+  .ideas-card{
+    margin: 0;
+  }
+  .ideas-card .ideas-card-header{
+    flex-direction: column;
+    align-items: start;
+  }
+  .ideas-id {
+    padding-bottom: 1rem;
+  }
+  .ideas-heading {
+    font-size: var(--lg);
+    font-weight: var(--semibold);
+    padding-bottom: 1rem;
+  }
+  .ideas-card .ideas-card-body{
+    flex-direction: column;
+    padding: 0 0 1rem 0;
+  }
+  .ideas-card .ideas-card-body div{
+    margin-bottom: .5rem;
+  }
+  .desktop-save-button{
+    display: none;
+  }
+  .mobile-save-button{
+    display: inline-block;
   }
 }
