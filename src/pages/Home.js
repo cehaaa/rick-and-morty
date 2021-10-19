@@ -1,6 +1,7 @@
 import React from "react";
 import { getRandomIdeas } from "../service/ideas";
 import Ideas from "../components/ideas/Ideas";
+import Spinner from "../components/spinner/Spinner";
 import { useState, useEffect } from "react";
 
 const Home = () => {
@@ -22,6 +23,9 @@ const Home = () => {
         <div>
           <button onClick={fetchRandomIdeas} className="btn-primary">
             Random
+            <div style={{ marginLeft: "10px" }}>
+              <Spinner />
+            </div>
           </button>
         </div>
       </div>

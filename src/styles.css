@@ -21,7 +21,6 @@
   --medium: 500;
   --semibold: 600;
   --bold: 700;
-  
 }
 
 * {
@@ -119,12 +118,29 @@ body{
   font-size: var(--lg);
 }
 
+
 .card .card-body{
   padding: 1rem 0 2rem 0;
 }
 
 .mobile-save-button {
   display: none;
+}
+
+.loader {
+  border: 2px solid var(--medium-gray);
+  border-radius: 50%;
+  border-top: 2px solid  var(--gray);
+  width:1.20rem;
+  height:1.20rem;
+  animation: spin-loader 2s linear infinite
+}
+
+@keyframes spin-loader{
+  0%{
+    transform: rotate(0deg);
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 600px) { 
