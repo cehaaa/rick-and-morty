@@ -5,7 +5,6 @@ import { getRandomIdeas } from "../service/ideas";
 
 import Ideas from "../components/ideas/Ideas";
 import Spinner from "../components/spinner/Spinner";
-import Skeleton from "../components/skeleton/Skeleton";
 
 const Home = () => {
   const [idea, setIdea] = useState({});
@@ -25,7 +24,12 @@ const Home = () => {
   return (
     <div>
       <div className="content-wrapper">
-        <div className="heading-text">Let's get some ideas.</div>
+        <div>
+          <div className="heading-text">Let's get some ideas.</div>
+          <div className="content-text" style={{ marginTop: ".25rem" }}>
+            Save it, if you think it's a cool idea
+          </div>
+        </div>
         <div>
           <button onClick={fetchRandomIdeas} className="btn-primary">
             Random
@@ -40,7 +44,7 @@ const Home = () => {
         </div>
       </div>
       <div className="content-wrapper">
-        {isLoading ? <Skeleton /> : <Ideas idea={idea} loading={isLoading} />}
+        <Ideas idea={idea} />
       </div>
     </div>
   );
