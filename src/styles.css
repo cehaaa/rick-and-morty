@@ -20,7 +20,7 @@
   /* font weight */  
   --medium: 500;
   --semibold: 600;
-  --bold: 700;
+  --bold: 700;  
 }
 
 * {
@@ -58,11 +58,12 @@ body{
 }
 
 .navbar .navbar-text {
-  font-size: var(--sm);  
+  font-size: var(--sm);
+  color: var(--darken-gray)
 }
 
 .content-wrapper{    
-  padding: 2rem 2rem 0 2rem;  
+  padding:2rem;
   display:flex;
   justify-content: space-between;
   align-items: center;
@@ -71,6 +72,11 @@ body{
 .heading-text {
   font-weight: var(--semibold);
   font-size: var(--xl2);
+}
+
+.content-text{
+  font-size: var(--sm);
+  color: var(--darken-gray)
 }
 
 .btn-primary {
@@ -92,92 +98,70 @@ body{
   background: var(--hover-blue);
 }
 
-.card {
-  padding: 0 2rem;
+.card {  
   border: 1px solid var(--medium-gray);
   width: 100%;
   height: 100%;
-  border-radius: 0.25rem;
-  transition: 200ms;
-  cursor: pointer;
-}
-
-.card:hover{
-  border: 1px solid var(--black)
-}
-
-.card .card-header{
+  border-radius: 0.25rem;  
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 0 1rem 0;
+  flex-direction: row;
+  overflow: hidden;
 }
 
-.card .card-header .card-title {
+.card-heading{
+  font-size: var(--xl);
   font-weight: var(--semibold);
+}
+
+.card-title{
+  font-weight: var(--semibold);
+  letter-spacing:1.1px;
   font-size: var(--lg);
 }
 
-
-.card .card-body{
-  padding: 1rem 0 2rem 0;
+.card .card-inner-left{
+  background: var(--blue);
+  color: white;
+  padding:2rem 1rem;
+  width: 500px;  
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.skeleton-container{
-  padding: 0 2rem;
-  border: 1px solid var(--medium-gray);
+.card .card-inner-right {
+  padding:2rem 1rem;
   width: 100%;
+}
+
+.card .card-inner-right .card-inner-container{
   height: 100%;
-  border-radius: 0.25rem;
-  transition: 200ms;
-  cursor: pointer;
-}
-
-.skeleton-container .skeleton-header{
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 2rem 0 1rem 0;
 }
 
-.skeleton-container .skeleton-header .skeleton-title{
-  border-radius: .25rem;
-  width: 500px;
-  height: 35px;
-  animation: skeleton-loading 1s linear infinite alternate;
+.card .card-inner-right .card-inner-container div{
+  margin-bottom: .5rem;
 }
 
-.skeleton-container .skeleton-header .skeleton-button{
-  border-radius: .25rem;
-  height: 44px ;
-  width: 83px;
-  animation: skeleton-loading 1s linear infinite alternate;
-}
-
-.skeleton-container .skeleton-body{
+.card-inner-right .inner-right-header{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0 2rem 0;
+  justify-content: space-between;  
 }
 
-.skeleton-container .skeleton-body .skeleton-content{
-  width: 80px;
-  height: 20px;
-  animation: skeleton-loading 1s linear infinite alternate;
+.card-inner-right .inner-right-container{  
+  display: flex;
 }
 
-@keyframes skeleton-loading{
-  0%{
-    background-color: hsl(200, 20%, 70%);
-  }
-  100%{
-    background-color: hsl(200, 20%, 95%);
-  }
+.card-inner-right .inner-right-container .inner-right-content{
+  display: flex;
+  justify-content: space-between;  
+  width: 100%;
 }
 
-.mobile-save-button {
-  display: none;
+.card-inner-right .inner-right-content-container div:nth-child(odd){
+  margin-bottom:1rem
 }
 
 .loader {
@@ -198,7 +182,7 @@ body{
   }
 } 
 
-@media screen and (max-width: 600px) { 
+@media screen and (max-width: 950px) { 
   .container{
     width: 100%
   }
@@ -206,15 +190,16 @@ body{
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    padding: 2rem 1rem 0 1rem;
+
   }
-  .heading-text{
-    padding-bottom: 1rem;
+  .content-wrapper div :nth-child(even){
+    margin-bottom: 1rem;
   }
-  .desktop-save-button{
-    display: none;
+  .card{
+    flex-direction: column;
   }
-  .mobile-save-button{
-    display: inline-block;
+  .card .card-inner-left{
+    width: 100%;
   }
+  
 }
