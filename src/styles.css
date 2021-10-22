@@ -8,6 +8,7 @@
   --darken-gray: #6B7280;
   --blue: #3B82F6;
   --hover-blue: #2563EB;
+  --indigo: #6366F1;
   --black: #37352F;
 
   /* font sizes */
@@ -119,10 +120,10 @@ body{
   font-size: var(--lg);
 }
 
-.card .card-inner-left{
-  background: var(--blue);
+.card .card-inner-left{  
+  background-image: linear-gradient(to right,var(--blue), var(--indigo) );
   color: white;
-  padding:2rem 1rem;
+  padding:1rem 2rem;
   width: 500px;  
   display:flex;
   flex-direction: column;
@@ -130,38 +131,13 @@ body{
 }
 
 .card .card-inner-right {
-  padding:2rem 1rem;
+  padding:1rem 2rem;
   width: 100%;
 }
 
 .card .card-inner-right .card-inner-container{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  display: flex;  
   justify-content: space-between;
-}
-
-.card .card-inner-right .card-inner-container div{
-  margin-bottom: .5rem;
-}
-
-.card-inner-right .inner-right-header{
-  display: flex;
-  justify-content: space-between;  
-}
-
-.card-inner-right .inner-right-container{  
-  display: flex;
-}
-
-.card-inner-right .inner-right-container .inner-right-content{
-  display: flex;
-  justify-content: space-between;  
-  width: 100%;
-}
-
-.card-inner-right .inner-right-content-container div:nth-child(odd){
-  margin-bottom:1rem
 }
 
 .loader {
@@ -182,14 +158,18 @@ body{
   }
 } 
 
-@media screen and (max-width: 950px) { 
+@media screen and (max-width: 950px) {   
   .container{
     width: 100%
+  }
+  .navbar{
+    padding: 2rem 1rem;
   }
   .content-wrapper {
     flex-direction: column;
     justify-content: start;
     align-items: start;
+    padding: 1rem ;
 
   }
   .content-wrapper div :nth-child(even){
@@ -199,7 +179,10 @@ body{
     flex-direction: column;
   }
   .card .card-inner-left{
+    padding: 1rem;
     width: 100%;
   }
-  
+  .card .card-inner-right{
+    padding: 1rem;
+  }  
 }

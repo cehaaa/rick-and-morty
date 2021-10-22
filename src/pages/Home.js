@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Button } from "@mui/material";
 
 import { getRandomIdeas } from "../service/ideas";
 
@@ -21,33 +22,7 @@ const Home = () => {
     setIsLoading(false);
   };
 
-  return (
-    <div>
-      <div className="content-wrapper">
-        <div>
-          <div className="heading-text">Let's get some ideas.</div>
-          <div className="content-text" style={{ marginTop: ".25rem" }}>
-            Save it, if you think it's a cool idea
-          </div>
-        </div>
-        <div>
-          <button onClick={fetchRandomIdeas} className="btn-primary">
-            Random
-            {isLoading ? (
-              <div style={{ marginLeft: "10px" }}>
-                <Spinner />
-              </div>
-            ) : (
-              false
-            )}
-          </button>
-        </div>
-      </div>
-      <div className="content-wrapper">
-        <Ideas idea={idea} />
-      </div>
-    </div>
-  );
+  return <>{/* <Button variant="contained">Hello World</Button> */}</>;
 };
 
 export default Home;
