@@ -1,1 +1,1 @@
-export const BASE_URL = "http://www.boredapi.com/api";
+export const BASE_URL = "https://rickandmortyapi.com/api";
