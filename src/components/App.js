@@ -3,15 +3,18 @@ import React from "react";
 import Header from "./header/Header";
 import Home from "./../pages/Home";
 
-import { Box, Container, Typography } from "@mui/material";
 import { colors } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const App = () => {
   return (
     <>
+      {/* <ThemeProvider> */}
       <Box
         sx={{
-          background: colors.grey[200],
+          // background: colors.grey[200],
+          background: "#202329",
         }}
       >
         <Container
@@ -19,13 +22,15 @@ const App = () => {
           maxWidth="md"
           sx={{
             minHeight: "100vh",
-            background: colors.grey[100],
+            // background: colors.grey[100],
+            background: "#24282f",
           }}
         >
           <Header />
           <Home />
         </Container>
       </Box>
+      {/* </ThemeProvider> */}
     </>
   );
 };
