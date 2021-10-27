@@ -8,14 +8,15 @@ const Header = () => {
     <>
       <Box
         sx={{
-          p: 3,
-          borderBottom: ".5px solid" + colors.grey[300],
+          p: 5,
+          borderBottom: ".5px solid" + colors.grey[600],
         }}
       >
         <Typography
           variant="h4"
           sx={{
             fontWeight: 600,
+            color: "white",
           }}
         >
           The Rick and Morty

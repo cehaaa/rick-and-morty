@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
 
 import { Box, Typography, colors } from "@mui/material";
 
@@ -14,24 +13,26 @@ const Home = () => {
         }}
       >
         <Typography
-          variant="h5"
+          variant="h4"
           sx={{
             fontWeight: 500,
+            color: "white",
           }}
         >
           Charactres
         </Typography>
-        <Box
+        <Typography
+          variant="subtitle1"
+          gutterBottom
+          component="div"
           sx={{
-            fontFamily: "default",
-            fontSize: 15,
             mt: 1,
             mb: 4,
             color: colors.grey[600],
           }}
         >
           List all characters
-        </Box>
+        </Typography>
         <Characters />
       </Box>
     </>

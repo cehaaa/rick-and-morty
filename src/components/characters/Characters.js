@@ -27,13 +27,19 @@ const Characters = () => {
 
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={5}
+        sx={{
+          display: "flex",
+        }}
+      >
         {characters.map((character) => {
           return (
-            <Grid item xs={6} key={character.id}>
+            <Grid item sm={12} lg={3} key={character.id}>
               <Card
                 sx={{
-                  display: "flex",
+                  height: "100%",
                   background: "#3c3e44",
                   color: "white",
                 }}
@@ -46,7 +52,7 @@ const Characters = () => {
                   <CardMedia
                     component="img"
                     sx={{
-                      width: 160,
+                      backgroundSize: "cover",
                       transition: "200ms",
                       "&:hover": {
                         transform: "scale(1.3)",
@@ -58,7 +64,7 @@ const Characters = () => {
                 <Box>
                   <CardContent>
                     <Typography
-                      variant="h6"
+                      variant="h5"
                       sx={{
                         cursor: "pointer",
                         transition: "200ms",
@@ -69,25 +75,14 @@ const Characters = () => {
                     >
                       {character.name}
                     </Typography>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          height: "10px",
-                          width: "10px",
-                          borderRadius: "50%",
-                          background:
-                            character.status === "Dead" ? "#d63d2e" : "#55cc44",
-                          mr: 1,
-                        }}
-                      ></Box>
-                      <Box sx={{ fontFamily: "default", fontSize: "16px" }}>
-                        {character.status}
-                      </Box>
+                    <Box>
+                      <Typography
+                        variant="body1"
+                        component="div"
+                        sx={{ mt: 1 }}
+                      >
+                        Last known location:
+                      </Typography>
                     </Box>
                   </CardContent>
                 </Box>
