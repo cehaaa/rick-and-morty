@@ -1,20 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-import {
-  Box,
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-} from "@mui/material";
-import { colors } from "@mui/material";
-
 import { getCharacters } from "../../service/characters";
+import { getEpisode } from "../../service/episodes";
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
+  const [firstSeen, setFirstSeen] = useState([]);
 
   useEffect(() => {
     fetchCharacters();
@@ -27,70 +19,45 @@ const Characters = () => {
 
   return (
     <>
-      <Grid
-        container
-        spacing={5}
-        sx={{
-          display: "flex",
-        }}
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {characters.map((character) => {
           return (
-            <Grid item sm={12} lg={3} key={character.id}>
-              <Card
-                sx={{
-                  height: "100%",
-                  background: "#3c3e44",
-                  color: "white",
-                }}
-              >
-                <Box
-                  sx={{
-                    overflow: "hidden",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      backgroundSize: "cover",
-                      transition: "200ms",
-                      "&:hover": {
-                        transform: "scale(1.3)",
-                      },
-                    }}
-                    image={character.image}
-                  />
-                </Box>
-                <Box>
-                  <CardContent>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        cursor: "pointer",
-                        transition: "200ms",
-                        fontWeight: 600,
-                        color: "#f5f5f5",
-                        "&:hover": { color: colors.orange[500] },
-                      }}
-                    >
-                      {character.name}
-                    </Typography>
-                    <Box>
-                      <Typography
-                        variant="body1"
-                        component="div"
-                        sx={{ mt: 1 }}
-                      >
-                        Last known location:
-                      </Typography>
-                    </Box>
-                  </CardContent>
-                </Box>
-              </Card>
-            </Grid>
+            <div
+              className="flex overflow-hidden rounded-md bg-gray-600"
+              key={character.id}
+            >
+              <div>
+                <img
+                  src={character.image}
+                  alt=""
+                  className="w-44 h-full object-cover object-center"
+                />
+              </div>
+              <div className="p-3 flex-1">
+                <div className="text-xl font-bold">{character.name}</div>
+                <div className=" flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className=" font-medium text-sm">
+                    {character.status} - {character.species}
+                  </div>
+                </div>
+                <div className="mt-5">
+                  <div className="text-sm font-bold text-gray-300 tracking-wide">
+                    Last known location:
+                  </div>
+                  <div className=" text-base">{character.location.name}</div>
+                </div>
+                <div className="mt-5">
+                  <div className="text-sm font-bold text-gray-300 tracking-wide">
+                    First seen in:
+                  </div>
+                  <div className=" text-base">{character.location.name}</div>
+                </div>
+              </div>
+            </div>
           );
         })}
-      </Grid>
+      </div>
     </>
   );
 };

@@ -1,40 +1,17 @@
 import React from "react";
 
-import { Box, Typography, colors } from "@mui/material";
-
 import Characters from "../components/characters/Characters";
 
 const Home = () => {
   return (
     <>
-      <Box
-        sx={{
-          p: 3,
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: 500,
-            color: "white",
-          }}
-        >
-          Charactres
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          gutterBottom
-          component="div"
-          sx={{
-            mt: 1,
-            mb: 4,
-            color: colors.grey[600],
-          }}
-        >
-          List all characters
-        </Typography>
+      <div className="p-5 md:p-10">
+        <div className="mb-5">
+          <div className="text-2xl font-medium mb-1">Characters</div>
+          <div className="text-sm text-gray-400">Find your fav char here</div>
+        </div>
         <Characters />
-      </Box>
+      </div>
     </>
   );
 };

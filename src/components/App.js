@@ -1,30 +1,17 @@
 import React from "react";
 
-import Header from "./header/Header";
 import Home from "./../pages/Home";
-
-import { Box, Container } from "@mui/material";
+import Header from "./header/Header";
 
 const App = () => {
   return (
     <>
-      <Box
-        sx={{
-          background: "#202329",
-        }}
-      >
-        <Container
-          disableGutters
-          maxWidth="lg"
-          sx={{
-            minHeight: "100vh",
-            background: "#24282f",
-          }}
-        >
+      <div className="bg-gray-800 overflow-y-hidden text-white">
+        <div className="w-full md:w-9/12 bg-gray-700 mx-auto min-h-screen ">
           <Header />
           <Home />
-        </Container>
-      </Box>
+        </div>
+      </div>
     </>
   );
 };

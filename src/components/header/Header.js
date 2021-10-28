@@ -1,27 +1,13 @@
 import React from "react";
 
-import { colors } from "@mui/material";
-import { Box, Container, Typography } from "@mui/material";
-
 const Header = () => {
   return (
     <>
-      <Box
-        sx={{
-          p: 5,
-          borderBottom: ".5px solid" + colors.grey[600],
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: 600,
-            color: "white",
-          }}
-        >
+      <div className="p-5 md:p-10 border-b border-gray-600">
+        <div className="text-3xl font-bold tracking-wide">
           The Rick and Morty
-        </Typography>
-      </Box>
+        </div>
+      </div>
     </>
   );
 };

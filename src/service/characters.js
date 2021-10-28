@@ -1,5 +1,7 @@
 import axios from "../utils/axios";
 
 export const getCharacters = () => {
-  return axios.get("/character/?page=5");
+  const page = Math.floor(Math.random() * (34 - 1) + 1);
+
+  return axios.get(`/character/?page=${page}`);
 };
