@@ -1,12 +1,12 @@
+import { fireEvent } from "@testing-library/react";
 import React from "react";
 import { useState, useEffect } from "react";
 
 import { getCharacters } from "../../service/characters";
-import { getEpisode } from "../../service/episodes";
+import { getEpisode, getEpisodeName } from "../../service/episodes";
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
-  const [firstSeen, setFirstSeen] = useState([]);
 
   useEffect(() => {
     fetchCharacters();
@@ -14,7 +14,31 @@ const Characters = () => {
 
   const fetchCharacters = async () => {
     const res = await getCharacters();
-    setCharacters(res.data.results);
+    res.data && mapCharacters(res.data.results);
+  };
+
+  const mapCharacters = async (characters) => {
+    characters.forEach(() => {});
+
+    let mapedCharacters = [];
+
+    characters.map((character) => {
+      let mock = {
+        ...character,
+        firstEpisode: character.episode[0],
+      };
+      mapedCharacters.push(mock);
+    });
+
+    setCharacters(mapedCharacters);
+  };
+
+  const getCharactersStatusClassName = (status) => {
+    if (status === "Alive") {
+      return "bg-green-500";
+    } else if (status === "Dead") {
+      return "bg-red-500";
+    } else return "bg-gray-500";
   };
 
   return (
@@ -23,20 +47,23 @@ const Characters = () => {
         {characters.map((character) => {
           return (
             <div
-              className="flex overflow-hidden rounded-md bg-gray-600"
+              className="flex overflow-hidden rounded-md bg-gray-600 shadow-sm"
               key={character.id}
             >
               <div>
                 <img
                   src={character.image}
-                  alt=""
                   className="w-44 h-full object-cover object-center"
                 />
               </div>
               <div className="p-3 flex-1">
                 <div className="text-xl font-bold">{character.name}</div>
-                <div className=" flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <div className=" flex items-center space-x-2 mt-0.5">
+                  <div
+                    className={`w-2 h-2 rounded-full ${getCharactersStatusClassName(
+                      character.status
+                    )}`}
+                  ></div>
                   <div className=" font-medium text-sm">
                     {character.status} - {character.species}
                   </div>
