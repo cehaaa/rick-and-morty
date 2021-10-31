@@ -1,38 +1,8 @@
-import { fireEvent } from "@testing-library/react";
 import React from "react";
-import { useState, useEffect } from "react";
 
-import { getCharacters } from "../../service/characters";
-import { getEpisode, getEpisodeName } from "../../service/episodes";
+import LocalPersistent from "../../service/localPersistent";
 
-const Characters = () => {
-  const [characters, setCharacters] = useState([]);
-
-  useEffect(() => {
-    fetchCharacters();
-  }, []);
-
-  const fetchCharacters = async () => {
-    const res = await getCharacters();
-    res.data && mapCharacters(res.data.results);
-  };
-
-  const mapCharacters = async (characters) => {
-    characters.forEach(() => {});
-
-    let mapedCharacters = [];
-
-    characters.map((character) => {
-      let mock = {
-        ...character,
-        firstEpisode: character.episode[0],
-      };
-      mapedCharacters.push(mock);
-    });
-
-    setCharacters(mapedCharacters);
-  };
-
+const Characters = ({ characters }) => {
   const getCharactersStatusClassName = (status) => {
     if (status === "Alive") {
       return "bg-green-500";
@@ -41,23 +11,50 @@ const Characters = () => {
     } else return "bg-gray-500";
   };
 
+  const lp = new LocalPersistent();
+  const save = (data) => {
+    lp.save(data);
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {characters.map((character) => {
           return (
             <div
-              className="flex overflow-hidden rounded-md bg-gray-600 shadow-sm"
+              className="flex flex-col md:flex-row overflow-hidden rounded-md bg-gray-600 shadow-sm relative group"
               key={character.id}
             >
-              <div>
+              <button
+                className="absolute top-0 -right-12 group-hover:right-0 p-2 rounded-full bg-gray-500 hover:bg-gray-400 m-3 duration-200 focus:outline-none"
+                onClick={() => save(character)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              </button>
+
+              <div className="overflow-hidden">
                 <img
                   src={character.image}
-                  className="w-44 h-full object-cover object-center"
+                  className="w-full md:w-44 h-full object-cover object-center transform group-hover:scale-125 group-hover:rotate-6 duration-200"
                 />
               </div>
               <div className="p-3 flex-1">
-                <div className="text-xl font-bold">{character.name}</div>
+                <div className="text-xl font-bold hover:text-yellow-500 duration-200 cursor-pointer">
+                  {character.name}
+                </div>
                 <div className=" flex items-center space-x-2 mt-0.5">
                   <div
                     className={`w-2 h-2 rounded-full ${getCharactersStatusClassName(
@@ -70,15 +67,19 @@ const Characters = () => {
                 </div>
                 <div className="mt-5">
                   <div className="text-sm font-bold text-gray-300 tracking-wide">
-                    Last known location:
+                    Gender
                   </div>
-                  <div className=" text-base">{character.location.name}</div>
+                  <div className="text-base hover:text-yellow-500 duration-200 cursor-pointer">
+                    {character.gender}
+                  </div>
                 </div>
                 <div className="mt-5">
                   <div className="text-sm font-bold text-gray-300 tracking-wide">
-                    First seen in:
+                    Last known location:
                   </div>
-                  <div className=" text-base">{character.location.name}</div>
+                  <div className="text-base hover:text-yellow-500 duration-200 cursor-pointer">
+                    {character.location.name}
+                  </div>
                 </div>
               </div>
             </div>
