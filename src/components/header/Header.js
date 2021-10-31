@@ -2,10 +2,14 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="navbar">
-      <div className="navbar-title">Bored Mate</div>
-      <div className="navbar-text">What will you do today?</div>
-    </div>
+    <>
+      <div className="p-5 md:p-10 border-b border-gray-600 flex flex-col md:flex-row md:items-center justify-between">
+        <div className="text-3xl font-bold tracking-wide">
+          The Rick and Morty
+        </div>
+        <div>Saved</div>
+      </div>
+    </>
   );
 };
 

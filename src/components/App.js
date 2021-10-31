@@ -1,15 +1,18 @@
 import React from "react";
+
+import Home from "./../pages/Home";
 import Header from "./header/Header";
-import Home from "../pages/Home";
 
 const App = () => {
   return (
-    <div className="container">
-      <Header />
-      <div>
-        <Home />
+    <>
+      <div className="bg-gray-800 overflow-y-hidden text-white">
+        <div className="w-full md:w-9/12 bg-gray-700 mx-auto min-h-screen ">
+          <Header />
+          <Home />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
