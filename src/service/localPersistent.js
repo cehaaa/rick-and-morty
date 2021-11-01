@@ -1,6 +1,11 @@
 export default class LocalPersistent {
   constructor() {
-    this.characters = JSON.parse(localStorage.getItem("bored-app-ideas")) || [];
+    this.characters =
+      JSON.parse(localStorage.getItem("rick-and-morty-app")) || [];
+  }
+
+  getCharacters() {
+    return this.characters;
   }
 
   checkValidCharacter(data) {
