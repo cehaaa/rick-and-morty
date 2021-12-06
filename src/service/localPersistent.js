@@ -32,5 +32,7 @@ export default class LocalPersistent {
 
   delete(index) {
     this.characters.splice(index, 1);
+    localStorage.setItem("rick-and-morty-app", JSON.stringify(this.characters));
+    return this.characters;
   }
 }
