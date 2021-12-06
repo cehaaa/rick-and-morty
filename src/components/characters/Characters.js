@@ -12,14 +12,19 @@ const Characters = ({ characters }) => {
   };
 
   const lp = new LocalPersistent();
+
   const save = (data) => {
     lp.save(data);
+  };
+
+  const remove = (index) => {
+    lp.delete(index);
   };
 
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {characters.map((character) => {
+        {characters.map((character, index) => {
           return (
             <div
               className="flex flex-col md:flex-row overflow-hidden rounded-md bg-gray-600 shadow-sm relative group"
