@@ -1,19 +1,8 @@
 import React from "react";
-import { useEffect, useState } from "react";
 
-import LocalPersistent from "../service/localPersistent";
-
-import Characters from "../components/characters/Characters.js";
+import SavedCharacters from "../components/characters/SavedCharacters";
 
 function Saved() {
-  const lp = new LocalPersistent();
-
-  const [characters, setCharacters] = useState([]);
-
-  useEffect(() => {
-    setCharacters(lp.getCharacters());
-  }, []);
-
   return (
     <>
       <div className="p-5 md:p-10">
@@ -26,11 +15,7 @@ function Saved() {
           </div>
         </div>
         <div>
-          {characters ? (
-            <Characters characters={characters} />
-          ) : (
-            <div>Empty</div>
-          )}
+          <SavedCharacters saved />
         </div>
       </div>
     </>
