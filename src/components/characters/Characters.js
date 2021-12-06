@@ -47,6 +47,7 @@ const Characters = ({ characters }) => {
 
               <div className="overflow-hidden">
                 <img
+                  alt={character.name}
                   src={character.image}
                   className="w-full md:w-44 h-full object-cover object-center transform group-hover:scale-125 group-hover:rotate-6 duration-200"
                 />
