@@ -12,7 +12,7 @@ const App = () => {
     <>
       <Router>
         <div className="bg-gray-800 overflow-y-hidden text-white">
-          <div className="w-full md:w-9/12 bg-gray-700 mx-auto min-h-screen ">
+          <div className="lg:w-full xl:w-9/12 bg-gray-700 mx-auto min-h-screen ">
             <Header />
             <Switch>
               <Route exact path="/" component={Home} />
