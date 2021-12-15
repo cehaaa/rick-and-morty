@@ -15,7 +15,7 @@ const App = () => {
           <div className="lg:w-full xl:w-9/12 bg-gray-700 mx-auto min-h-screen ">
             <Header />
             <Switch>
-              <Route path="/" component={Home} />
+              <Route exact path="/" component={Home} />
               <Route path="/saved" component={Saved} />
             </Switch>
           </div>
