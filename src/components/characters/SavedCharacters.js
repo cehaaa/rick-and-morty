@@ -1,18 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-import LocalPersistent from "../../service/localPersistent";
+import { lp } from "../../utils/localPersistent";
+import characterStatusClass from "../../utils/characterStatusClass";
 
-const Characters = ({ saved }) => {
-  const lp = new LocalPersistent();
-  const getCharactersStatusClassName = (status) => {
-    if (status === "Alive") {
-      return "bg-green-500";
-    } else if (status === "Dead") {
-      return "bg-red-500";
-    } else return "bg-gray-500";
-  };
-
+const SavedCharacters = ({ saved }) => {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
@@ -25,7 +17,7 @@ const Characters = ({ saved }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {characters.map((character, index) => {
           return (
             <div
@@ -35,20 +27,20 @@ const Characters = ({ saved }) => {
               {/* delete button */}
               {saved ? (
                 <button
-                  className="absolute top-0 -right-12 group-hover:right-0 p-2 rounded-full bg-gray-500 hover:bg-gray-400 m-3 duration-200 focus:outline-none"
+                  className="absolute top-0 right-0 md:-right-12 group-hover:right-0 p-2 rounded-full bg-gray-500 hover:bg-gray-400 m-3 duration-200 focus:outline-none"
                   onClick={() => remove(index)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4"
+                    className="h-4 w-4"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                     />
                   </svg>
@@ -70,7 +62,7 @@ const Characters = ({ saved }) => {
                 </div>
                 <div className=" flex items-center space-x-2 mt-0.5">
                   <div
-                    className={`w-2 h-2 rounded-full ${getCharactersStatusClassName(
+                    className={`w-2 h-2 rounded-full ${characterStatusClass(
                       character.status
                     )}`}
                   ></div>
@@ -94,6 +86,14 @@ const Characters = ({ saved }) => {
                     {character.location.name}
                   </div>
                 </div>
+                <div className="mt-5">
+                  <button
+                    className="p-3 rounded bg-gray-500 w-full text-gray-300 font-semibold tracking-wide hover:bg-gray-400"
+                    onClick={() => remove(index)}
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
             </div>
           );
@@ -103,4 +103,4 @@ const Characters = ({ saved }) => {
   );
 };
 
-export default Characters;
+export default SavedCharacters;

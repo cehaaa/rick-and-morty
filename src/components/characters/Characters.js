@@ -1,24 +1,11 @@
 import React from "react";
 
-import LocalPersistent from "../../service/localPersistent";
+import { lp } from "../../utils/localPersistent";
+import characterStatusClass from "../../utils/characterStatusClass";
 
 const Characters = ({ characters }) => {
-  const getCharactersStatusClassName = (status) => {
-    if (status === "Alive") {
-      return "bg-green-500";
-    } else if (status === "Dead") {
-      return "bg-red-500";
-    } else return "bg-gray-500";
-  };
-
-  const lp = new LocalPersistent();
-
   const save = (data) => {
     lp.save(data);
-  };
-
-  const remove = (index) => {
-    lp.delete(index);
   };
 
   return (
@@ -42,9 +29,9 @@ const Characters = ({ characters }) => {
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
                     d="M12 4v16m8-8H4"
                   />
                 </svg>
@@ -63,7 +50,7 @@ const Characters = ({ characters }) => {
                 </div>
                 <div className=" flex items-center space-x-2 mt-0.5">
                   <div
-                    className={`w-2 h-2 rounded-full ${getCharactersStatusClassName(
+                    className={`w-2 h-2 rounded-full ${characterStatusClass(
                       character.status
                     )}`}
                   ></div>
@@ -86,6 +73,14 @@ const Characters = ({ characters }) => {
                   <div className="text-base hover:text-yellow-500 duration-200 cursor-pointer">
                     {character.location.name}
                   </div>
+                </div>
+                <div className="mt-5">
+                  <button
+                    className="p-3 rounded bg-gray-500 w-full text-gray-300 font-semibold tracking-wide hover:bg-gray-400"
+                    onClick={() => save(character)}
+                  >
+                    Save Character
+                  </button>
                 </div>
               </div>
             </div>

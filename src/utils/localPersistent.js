@@ -1,4 +1,4 @@
-export default class LocalPersistent {
+export class LocalPersistent {
   constructor() {
     this.characters =
       JSON.parse(localStorage.getItem("rick-and-morty-app")) || [];
@@ -32,7 +32,12 @@ export default class LocalPersistent {
 
   delete(index) {
     this.characters.splice(index, 1);
+
     localStorage.setItem("rick-and-morty-app", JSON.stringify(this.characters));
-    return this.characters;
+
+    return JSON.parse(localStorage.getItem("rick-and-morty-app"));
+    // return this.getCharacters();
   }
 }
+
+export const lp = new LocalPersistent();

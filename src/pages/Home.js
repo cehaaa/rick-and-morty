@@ -35,7 +35,7 @@ const Home = () => {
               onClick={() => fetchCharacters()}
             >
               Random
-              {isLoading && <Spinner />}
+              {/* {isLoading && <Spinner />} */}
             </button>
           </div>
         </div>

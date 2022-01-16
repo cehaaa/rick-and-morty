@@ -13,7 +13,7 @@ const Header = () => {
         </Link>
 
         <Link to="/saved">
-          <div className="hover:text-gray-300 font-medium tracking-wide duration-200">
+          <div className="hover:text-gray-300 font-medium tracking-wide duration-200 mt-5 md:mt-0">
             Saved
           </div>
         </Link>
