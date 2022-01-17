@@ -74,7 +74,7 @@ const Characters = ({ characters }) => {
                     {character.location.name}
                   </div>
                 </div>
-                <div className="mt-5">
+                <div className="mt-5 block md:hidden">
                   <button
                     className="p-3 rounded bg-gray-500 w-full text-gray-300 font-semibold tracking-wide hover:bg-gray-400"
                     onClick={() => save(character)}
